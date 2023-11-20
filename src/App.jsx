@@ -1,4 +1,4 @@
-import { Route, Routes} from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Home from "./pages/Home"
 import MyOrders from "./pages/MyOrders"
@@ -9,19 +9,23 @@ import Footer from "./components/Footer"
 function App() {
 
   return (
-    <div className="w-screen flex flex-col justify-center bg-blue-900 text-zinc-50 min-h-screen sh-full">
-      <Header/>
+    <div className="w-screen flex flex-col justify-center items-center bg-blue-900 text-zinc-50 min-h-screen">
+      <Header />
       <NavBar />
-      <Routes>
-        <Route path="" element={<Home/>}/>
-        <Route path="/produtos" element={<Products/>} />
-        <Route path="/categorias" element={<Categories/>}/>
-        <Route path="/meus-pedidos" element={<MyOrders/>}/>
+      <div className="max-w-5xl flex justify-center items-center">
 
-      </Routes>
-      <Footer/>
-       
-    
+        <Routes>
+          <Route path="" element={<Home />} />
+          <Route path="/produtos" element={<Products />} />
+          <Route path="/categorias" element={<Categories />} />
+          <Route path="/meus-pedidos" element={<MyOrders />} />
+
+        </Routes>
+        
+      </div>
+      <Footer />
+
+
 
     </div>
   )

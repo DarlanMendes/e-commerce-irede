@@ -49,7 +49,7 @@ function MenuHamburguer(){
 
 export default function Header() {
     return (
-        <header className="p-8 lg:px-[107px]">
+        <header className="p-8 lg:px-[107px] w-screen">
             <div className="flex flex-row justify-between  place-content-between items-center gap-16 w-full max-w-[1226px] pb-3 md:pb-0  ">
             <MenuHamburguer/>
             <LogoHeader/>
