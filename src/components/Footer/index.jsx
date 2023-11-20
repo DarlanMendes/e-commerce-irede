@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Logo from "../../assets/logo-e-rede.png"
-import { FaFacebook,FaInstagram, FaWhatsapp} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 function LeftInformation() {
     const infosPagina = [
         { id: 1, tittle: "Sobre o E-Rede Store", url: "/sobre" },
@@ -9,7 +9,7 @@ function LeftInformation() {
         { id: 4, tittle: "Trabalhe conosco", url: "/trabalhe-conosco" },
     ]
     return (
-        <ul className="font-semibold text-[10px] ">
+        <ul className="font-semibold text-[10px] min-w-32">
             <p className="pb-[14px]">Informações</p>
             {infosPagina.map((info) => (
                 <li key={info.id} className="pl-[2px] pb-2">
@@ -28,7 +28,7 @@ function RightInformation() {
         { id: 4, tittle: "Esportivo", url: "/categoria/esportivo" },
     ]
     return (
-        <ul className="font-semibold text-[10px] ">
+        <ul className="font-semibold text-[10px] min-w-32">
             <p className="pb-[14px] ">Informações</p>
             {infosPagina.map((info) => (
                 <li key={info.id} className="pl-[2px] pb-2">
@@ -44,7 +44,7 @@ function LogoFooter() {
     return (
         <div className="flex flex-col gap-5 pb-5">
             <div className="flex gap-5">
-                <img src={Logo} alt=""  className="h-7"/>
+                <img src={Logo} alt="" className="h-7" />
                 <section className="text-[10px]">Lorem ipsum dolor sit amet
                     consectetur adipisicing elit. Perspiciatis necessitatibus repellat,
                     voluptatem! Nobis, ab!Perspiciatis necessitatibus Perspiciatis necessitatibus
@@ -52,33 +52,47 @@ function LogoFooter() {
             </div>
 
             <section className="flex text-base gap-6">
-            <FaFacebook />
-            <FaInstagram />
-            <FaWhatsapp />
+                <FaFacebook />
+                <FaInstagram />
+                <FaWhatsapp />
             </section>
         </div>
     )
 }
-
+function LocationFooter() {
+    return (
+        <div className="text-[10px]">
+            <h1 className=" font-semibold py-[14px]">Localização</h1>
+            <p className="font-regular pb-2">Rua Martinho Rodrigues, 331</p>
+            <p className="font-regular pb-2">Bairro de Fátima, Fortaleza-CE</p>
+        </div>
+    )
+}
 export default function Footer() {
     return (
-        <footer className="border flex flex-col p-6" >
-            <div className="border">
-                <LogoFooter />
-            </div>
-            <div className="border flex ">
-                <div className="flex-1">
-                    <LeftInformation />
+        <footer className="p-6 flex flex-col justify-center" >
+            <div className="flex flex-col  pb-0 md:flex-row md:justify-center md:gap-[60px]">
+                <div className="max-w-[292px]">
+                    <LogoFooter />
+                </div>
+                <div className="flex md:gap-[60px]">
+                    <div className="flex-1">
+                        <LeftInformation />
+
+                    </div>
+                    <div className="flex-1">
+                        <RightInformation />
+                    </div>
 
                 </div>
-                <div className="flex-1">
-                    <RightInformation />
+                <div className="">
+                    <LocationFooter />
                 </div>
 
+
             </div>
-            <div className="border">
-                3
-            </div>
+            <hr className="mt-4  px-6" />
+            <span className="mt-4 text-[10px] text-center">2023 Irede</span>
         </footer>
 
     )
