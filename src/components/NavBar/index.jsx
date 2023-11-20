@@ -19,7 +19,7 @@ export default function NavBar() {
 
     return (
         <nav>
-            <ul className="w-screen flex gap-10 justify-center">
+            <ul className="w-screen gap-10 justify-center hidden md:flex">
                 {routes.map((route) => (
                     <li key={route.id} className={updatedLocation===route.path?"text-orange-500":"text-zinc-50"}>
                         <Link to={`${route.path}`}>{route.tittle}</Link>
