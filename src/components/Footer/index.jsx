@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-
+import Logo from "../../assets/logo-e-rede.png"
+import { FaFacebook,FaInstagram, FaWhatsapp} from "react-icons/fa";
 function LeftInformation() {
     const infosPagina = [
         { id: 1, tittle: "Sobre o E-Rede Store", url: "/sobre" },
@@ -39,19 +40,39 @@ function RightInformation() {
     )
 }
 
+function LogoFooter() {
+    return (
+        <div className="flex flex-col gap-5 pb-5">
+            <div className="flex gap-5">
+                <img src={Logo} alt=""  className="h-7"/>
+                <section className="text-[10px]">Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Perspiciatis necessitatibus repellat,
+                    voluptatem! Nobis, ab!Perspiciatis necessitatibus Perspiciatis necessitatibus
+                </section>
+            </div>
+
+            <section className="flex text-base gap-6">
+            <FaFacebook />
+            <FaInstagram />
+            <FaWhatsapp />
+            </section>
+        </div>
+    )
+}
+
 export default function Footer() {
     return (
         <footer className="border flex flex-col p-6" >
             <div className="border">
-                1
+                <LogoFooter />
             </div>
             <div className="border flex ">
                 <div className="flex-1">
-                <LeftInformation/>
-                   
+                    <LeftInformation />
+
                 </div>
                 <div className="flex-1">
-                    <RightInformation/>
+                    <RightInformation />
                 </div>
 
             </div>
