@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 function Botoes() {
     return (
-        <div className="flex justify-center items-center  max-w-[289px]">
+        <div className="flex justify-center items-center w-full max-w-[289px]">
             <Link to="sign-up" className="hidden md:flex">Cadastre-se</Link>
             <Link to="sign-in" className="bg-orange-500 h-10 w-32 rounded-lg items-center justify-center mx-5 hidden md:flex">Entrar</Link>
             <MdOutlineShoppingCart className="text-white text-2xl" />
@@ -33,7 +33,7 @@ function InputHeader() {
 
 function LogoHeader() {
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-start w-full max-w-[206px]">
             <img src={logoERede} alt="Logo E-rede"  className=" h-[28px]"/>
         </div>
 
@@ -49,8 +49,8 @@ function MenuHamburguer(){
 
 export default function Header() {
     return (
-        <header className="p-8">
-            <div className="flex flex-row justify-between w-full pb-3 md:pb-0  ">
+        <header className="p-8 lg:px-[107px]">
+            <div className="flex flex-row justify-between  place-content-between items-center gap-16 w-full max-w-[1226px] pb-3 md:pb-0  ">
             <MenuHamburguer/>
             <LogoHeader/>
             <div className="hidden md:flex w-full md:max-w-[300px] lg:max-w-[520px]">
