@@ -18,7 +18,6 @@ function Card({ highlighted }) {
 }
 function Promo() {
     const promo = {imgMob:imgMob, imgDesk:imgDesk}
-    console.log(promo.imgDesk)
     return (
         <div className="w-full relative md:block flex justify-center items-center  ">
             <img src={promo.imgMob} alt="Banner Promo mobile"  className="md:hidden w-full max-h-[400px] object-cover"/>

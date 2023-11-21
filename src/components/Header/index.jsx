@@ -1,8 +1,9 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logoERede from "../../assets/logo-e-rede.png";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useState, useEffect } from "react";
 
 function Botoes() {
     return (
@@ -34,39 +35,49 @@ function InputHeader() {
 function LogoHeader() {
     return (
         <div className="flex flex-col justify-center items-start md:w-full max-w-[206px]">
-            <img src={logoERede} alt="Logo E-rede"  className=" h-[28px]"/>
+            <img src={logoERede} alt="Logo E-rede" className=" h-[28px]" />
         </div>
 
     )
 }
-function MenuHamburguer(){
-    return(
-        <div className=" flex justify-start items-center md:hidden"> 
-            <GiHamburgerMenu  className="text-2xl"/>
+function MenuHamburguer() {
+    return (
+        <div className=" flex justify-start items-center md:hidden">
+            <GiHamburgerMenu className="text-2xl" />
         </div>
     )
 }
 
 export default function Header() {
+    const location = useLocation()
+    const pathMatches = location.pathname === "/sign-up" || location.pathname === "/sign-up"
+    
     return (
-        <header className="p-8 lg:px-[107px] w-full max-w-[1440px] overflow-x-hiddenus">
-            <div className="flex flex-row justify-between  place-content-between items-center  w-full max-w-[1226px] pb-3 md:pb-0  ">
-            <MenuHamburguer/>
-            <LogoHeader/>
-            <div className="hidden md:flex w-full md:max-w-[300px] lg:max-w-[520px]">
-            <InputHeader />
-            </div>
-           
-            <Botoes />
+        <>
+            {!pathMatches ?
+                <header className={`p-8 lg:px-[107px] w-full max-w-[1440px]`}>
 
-            </div>
-            <div className="flex md:hidden">
-            <InputHeader/>
-            </div>
-            
-            
-           
-           
-        </header>
+                    <div className={`flex flex-row justify-between  place-content-between items-center  w-full max-w-[1226px] pb-3 md:pb-0} `}>
+                        <MenuHamburguer />
+                        <LogoHeader />
+                        <div className="hidden md:flex w-full md:max-w-[300px] lg:max-w-[520px]">
+                            <InputHeader />
+                        </div>
+
+                        <Botoes />
+
+                    </div>
+                    <div className="flex md:hidden">
+                        <InputHeader />
+                    </div>
+
+                </header>
+                :
+                <></>
+            }
+        </>
+
+
+
     )
 }
