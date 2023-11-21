@@ -1,5 +1,8 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import imgTenis from "../../assets/tenis.webp"
+import { UserContext } from "../../assets/contexts/userContext"
+
+
 function HeaderCardOrders() {
     return (
         <div className="pb-3 px-2 flex md:justify-between justify-center text-base">
@@ -54,6 +57,9 @@ function MenuOrders() {
     )
 }
 function CardOrders({ sale }) {
+
+    const {user} = useContext(UserContext)
+    console.log(user)
     return (
 
         <details>

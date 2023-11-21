@@ -1,10 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
-import imgLogo from "../../assets/logo-e-rede.png"
+import imgLogo from "../../assets/logo-e-rede.png";
+import {  useState } from "react";
+
 export default function SignIn() {
     const navigate= useNavigate()
+    
+
+    const[user, setUser]=useState({email:"", password:""})
+    const userTeste = {email:"darlan.mendes@irede.org.br", password:"123456"}
+
+    function testeLogin(){
+        if(user.email === userTeste.email && user.password === userTeste.password){
+            navigate("/")
+            localStorage.setItem("user", JSON.stringify({email:user.email,name:"Darlan Mendes", id:121133}))
+        }else{
+            alert("Erro ao tentar se logar")
+        }
+    }
     const handleSubmit=(e)=>{
         e.preventDefault()
+        testeLogin()
     }
+    const handleLoginInfo=(e)=>{
+            setUser(previous=>({...previous,[e.target.name]:e.target.value}))
+    }
+
     return (
         <main className="flex flex-col  gap-7 h-screen justify-center pt-8 pb-7 lg:p-0 lg:flex-row-reverse">
             <section className="lg:w-[50vw] flex flex-col justify-center items-center gap-7">
@@ -17,13 +37,21 @@ export default function SignIn() {
             <form className="flex flex-col justify-center items-center bg-white px-5 py-[14px] max-w-[450px] w-full" onSubmit={(e)=>handleSubmit(e)}>
                 <h1 className="text-black text-2xl font-semibold pb-6">Fazer Login</h1>
                 <div className="flex flex-col gap-5 w-full items-center justify-center">
-                    <label className="text-black flex flex-col w-full justify-center items-center">
+                    <label className="text-black flex flex-col w-full justify-center items-center" >
                         <h1 className="pb-2 pl-2 w-full max-w-[280px]">Email*</h1>
-                        <input placeholder="Digite seu e-mail" required type="email" className=" bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" />
+                        <input placeholder="Digite seu e-mail" required type="email" onChange={(e)=>handleLoginInfo(e)}
+                        className=" bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" 
+                        name="email"
+                        value={user.email}
+                        />
                     </label>
                     <label className="text-black flex flex-col w-full justify-center items-center">
                         <h1 className="pb-2 pl-2 w-full max-w-[280px]">Senha*</h1>
-                        <input placeholder="Digite sua senha" required type="password" className="bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" />
+                        <input placeholder="Digite sua senha" required type="password" onChange={(e)=>handleLoginInfo(e)}
+                        className="bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" 
+                        name="password"
+                        value={user.password}
+                        />
                     </label>
 
                 </div>
