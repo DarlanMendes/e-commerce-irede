@@ -71,7 +71,7 @@ function LocationFooter() {
 export default function Footer() {
     return (
         <footer className="p-6 flex flex-col justify-center" >
-            <div className="flex flex-col  pb-0 md:flex-row md:justify-center md:gap-[60px]">
+            <div className="flex flex-col  pb-0 md:flex-row md:justify-center md:gap-[60px] max-w-[1440px]">
                 <div className="max-w-[292px]">
                     <LogoFooter />
                 </div>

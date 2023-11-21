@@ -20,10 +20,10 @@ function Promo() {
     const promo = {imgMob:imgMob, imgDesk:imgDesk}
     console.log(promo.imgDesk)
     return (
-        <div className="w-screen relative md:block flex justify-center ">
-            <img src={promo.imgMob} alt="Banner Promo mobile"  className="md:hidden w-screen max-h-[400px] object-cover"/>
-            <img src={promo.imgDesk} alt="Banner Promo desktop " className="hidden md:flex"/>
-            <Link to="/promo" className="bg-orange-500 absolute bottom-10 md:right-10 lg:right-30 xl:right-80 w-[331px] md:w-80 text-center h-16 rounded-md flex items-center justify-center">Aproveitar Oferta</Link>
+        <div className="w-full relative md:block flex justify-center items-center  ">
+            <img src={promo.imgMob} alt="Banner Promo mobile"  className="md:hidden w-full max-h-[400px] object-cover"/>
+            <img src={promo.imgDesk} alt="Banner Promo desktop " className="hidden md:flex w-full" />
+            <Link to="/promo" className="bg-orange-500 absolute bottom-10 md:right-10 lg:right-30 xl:right-60 2xl:-120 w-[331px] md:w-80 text-center h-16 rounded-md flex items-center justify-center text-xl">Aproveitar Oferta</Link>
         </div>
 
     )
@@ -37,10 +37,10 @@ function Destaques() {
     }
     const highlighteds = [highlighted, highlighted, highlighted, highlighted, highlighted, highlighted, highlighted]
     return (
-        <div className="bg-zinc-50  w-screen flex flex-col xl:px-24 ">
+        <div className="bg-zinc-50  w-full flex flex-col xl:px-24 justify-center items-center lg:pb-18 pb-4">
 
-            <h1 className="text-blue-900 font-semibold text-xl py-6 pl-7 max-w-5xl w-screen">Destaques</h1>
-            <div className="grid grid-cols-2  md:grid-cols-3 justify-around justify-items-center items-center gap-y-10 lg:grid-cols-5 xl:grid-cols-6 max-w-5xl">
+            <h1 className="text-blue-900 font-semibold text-xl py-6 pl-7  w-full">Destaques</h1>
+            <div className="grid xl:grid-cols-6 xl:gap-10 lg:grid-cols-5 lg:gap-8 md:grid-cols-4 md:gap-6 grid-cols-2 gap-2 place-items-center lg:w-full">
                 {highlighteds.map((highlighted, index) => (
 
                     <Card key={index} highlighted={highlighted} />
@@ -53,7 +53,7 @@ function Destaques() {
 export default function Home() {
     return (
         <main>
-            <section className="flex flex-wrap md:pt-10">
+            <section className="flex flex-wrap md:pt-10 justify-center">
                 <Promo />
                 <Destaques />
             </section>

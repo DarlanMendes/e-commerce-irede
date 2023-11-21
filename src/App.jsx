@@ -9,10 +9,10 @@ import Footer from "./components/Footer"
 function App() {
 
   return (
-    <div className="w-screen flex flex-col justify-center items-center bg-blue-900 text-zinc-50 min-h-screen">
+    <div className=" flex flex-col justify-center items-center bg-blue-900 text-zinc-50 min-h-screen overflow-hidden">
       <Header />
       <NavBar />
-      <div className="max-w-5xl flex justify-center items-center">
+      <div className=" flex justify-center items-center">
 
         <Routes>
           <Route path="" element={<Home />} />
