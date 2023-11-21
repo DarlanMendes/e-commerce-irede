@@ -2,6 +2,9 @@ import { Link,useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo-e-rede.png"
 export default function SignUp(){
     const navigate=useNavigate()
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+    }
     return(
         <main className="flex flex-col  gap-7 pt-8 pb-7 lg:p-0 lg:flex-row-reverse">
         <section className="lg:w-[50vw] flex flex-col justify-center items-center gap-7">
@@ -11,7 +14,7 @@ export default function SignUp(){
             />
         </section>
         <section className="lg:w-[50vw] lg:bg-slate-100 h-screen flex flex-col lg:justify-center items-center">
-        <form className="flex flex-col justify-center items-center bg-white px-5 py-[14px] max-w-[450px] w-full">
+        <form className="flex flex-col justify-center items-center bg-white px-5 py-[14px] max-w-[450px] w-full" onSubmit={(e)=>handleSubmit(e)}>
             <h1 className="text-black text-2xl font-semibold pb-6">Cadastre-se</h1>
             <div className="flex flex-col gap-5 w-full items-center justify-center">
             <label className="text-black flex flex-col w-full justify-center items-center">
