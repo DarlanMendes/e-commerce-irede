@@ -50,7 +50,7 @@ function MenuHamburguer() {
 
 export default function Header() {
     const location = useLocation()
-    const pathMatches = location.pathname === "/sign-up" || location.pathname === "/sign-up"
+    const pathMatches = location.pathname === "/sign-up" || location.pathname === "/sign-in"
     
     return (
         <>

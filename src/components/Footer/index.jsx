@@ -72,7 +72,7 @@ export default function Footer() {
     const pathMatches = location.pathname == "/sign-in" || location.pathname == "/sign-up"
     return (
         <>
-            {pathMatches ?
+            {!pathMatches ?
                 <footer className="p-6 flex flex-col justify-center" >
                     <div className="flex flex-col  pb-0 md:flex-row md:justify-center md:gap-[60px] max-w-[1440px]">
                         <div className="max-w-[292px]">
