@@ -53,7 +53,7 @@ function Destaques() {
 export default function Home() {
     return (
         <main>
-            <section className="flex flex-wrap md:pt-10 justify-center">
+            <section className="flex flex-wrap  justify-center">
                 <Promo />
                 <Destaques />
             </section>

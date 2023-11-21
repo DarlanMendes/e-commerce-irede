@@ -66,7 +66,7 @@ function CardOrders({ sale }) {
                     <div className="flex gap-4 py-5 ">
                         <img src={product.img} alt={product.name} className="h-20 w-18 rounded-md" />
                         <div className="flex flex-col justify-center">
-                            <h1 className="text-black font-bold">{product.product}</h1>
+                            <h1 className="text-black font-bold">{product.name}</h1>
                             <p>{product.category}</p>
                             <span className="text-orange-500 font-semibold">R$ {product.price}</span>
                         </div>
