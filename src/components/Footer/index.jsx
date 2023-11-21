@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import Logo from "../../assets/logo-e-rede.png"
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 function LeftInformation() {
@@ -69,7 +69,9 @@ function LocationFooter() {
     )
 }
 export default function Footer() {
+    const location = useLocation()
     const pathMatches = location.pathname == "/sign-in" || location.pathname == "/sign-up"
+
     return (
         <>
             {!pathMatches ?
@@ -97,7 +99,7 @@ export default function Footer() {
                     <hr className="mt-4  px-6" />
                     <span className="mt-4 text-[10px] text-center">2023 Irede</span>
                 </footer>
-                : <></>
+                : <>teste</>
             }
         </>
 
