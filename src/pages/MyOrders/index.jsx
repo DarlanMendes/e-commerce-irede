@@ -14,34 +14,34 @@ function MenuOrders() {
     const handleSelection = (e) => {
         setMenuOptionSelected(e.target.value)
     }
-    console.log(options.length - 1)
+   
     return (
         <aside className=" bg-white w-full md:max-w-[251px]">
             <menu className="md:flex flex-col px-6 py-3 hidden md:bg-slate-100 rounded-md">
-         
-                {options.map((option, index)=>(
-                    
-                    <input className={`${option===menuOptionSelected?"text-orange-500":"stone-500"} 
+
+                {options.map((option, index) => (
+
+                    <input className={`${option === menuOptionSelected ? "text-orange-500" : "stone-500"} 
                     text-start py-4 pl-1 text-bold
                      bg-slate-100 
-                     w-full ${index!==options.length -1 && "border-b-[1px] border-stone-500"}`}
-                    onClick={(e) => handleSelection(e)}
-                    value={option}
-                    key={index}
-                    type="button"
+                     w-full ${index !== options.length - 1 && "border-b-[1px] border-stone-500"}`}
+                        onClick={(e) => handleSelection(e)}
+                        value={option}
+                        key={index}
+                        type="button"
                     />
-                    
-                   
-                    
-                
+
+
+
+
                 ))}
-                 
-                
-                
-                
+
+
+
+
             </menu>
-            <select className="bg-orange-500 w-full text-center text-zinc-50 text-base h-12 rounded-md font-semibold mb-6 outline-none md:hidden " 
-            onChange={(e)=>handleSelection(e)}
+            <select className="bg-orange-500 w-full text-center text-zinc-50 text-base h-12 rounded-md font-semibold mb-6 outline-none md:hidden "
+                onChange={(e) => handleSelection(e)}
             >
                 <option value="Meus Pedidos">
                     Meus Pedidos
@@ -55,21 +55,34 @@ function MenuOrders() {
 }
 function CardOrders({ sale }) {
     return (
-        <div className="flex flex-col md:flex-row justify-between md:items-center border-t border-stone-500">
-            <div className="flex gap-4 py-5 ">
-                <img src={sale.img} alt={sale.product} className="h-20 w-18 rounded-md" />
-                <div className="flex flex-col justify-center">
-                    <h1 className="text-black font-bold">{sale.product}</h1>
-                    <p>{sale.category}</p>
-                    <span className="text-orange-500 font-semibold">R$ {sale.price}</span>
-                </div>
-            </div>
-            <div className="flex justify-between">
-                <h1 className="md:hidden block">Status:</h1>
-                <h1 className={`font-bold text-end ${sale.status === "Finalizado" ? "text-green-700" : "text-red-600"}`}>{sale.status}</h1>
-            </div>
 
-        </div>
+        <details>
+            <summary className="py-4 border-t-[1px] mt-4 border-stone-500">
+              Compra do dia: {sale.date}
+            </summary>
+           
+            {sale.products.map((product) => (
+                <div className="flex flex-col md:flex-row justify-between md:items-center border-t border-stone-500">
+                    <div className="flex gap-4 py-5 ">
+                        <img src={product.img} alt={product.name} className="h-20 w-18 rounded-md" />
+                        <div className="flex flex-col justify-center">
+                            <h1 className="text-black font-bold">{product.product}</h1>
+                            <p>{product.category}</p>
+                            <span className="text-orange-500 font-semibold">R$ {product.price}</span>
+                        </div>
+                    </div>
+                    <div className="flex justify-between">
+                        <h1 className="md:hidden block">Status:</h1>
+                        <h1 className={`font-bold text-end ${product.status === "Finalizado" ? "text-green-700" : "text-red-600"}`}>{product.status}</h1>
+                    </div>
+
+                </div>
+            ))}
+
+
+        </details>
+
+
     )
 }
 export default function MyOrders() {
@@ -77,8 +90,25 @@ export default function MyOrders() {
 
 
     const sales = [
-        { id: 1, img: imgTenis, product: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Finalizado" },
-        { id: 2, img: imgTenis, product: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Esperando Pagamento" }
+        {
+            id: 1,
+            products: [
+                { id: 1, img: imgTenis, name: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Finalizado" },
+                { id: 2, img: imgTenis, name: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Esperando Pagamento" }
+            ]
+            ,
+            date: "21/12/2023"
+        },
+        {
+            id: 2,
+            products: [
+                { id: 1, img: imgTenis, name: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Finalizado" },
+                { id: 2, img: imgTenis, name: "Nique Air Surf", category: "Tênis", price: "220,00", status: "Esperando Pagamento" }
+            ]
+            ,
+            date: "21/12/2023"
+        }
+
     ]
 
     return (
