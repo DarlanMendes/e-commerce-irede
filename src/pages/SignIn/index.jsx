@@ -6,14 +6,14 @@ export default function SignIn() {
         e.preventDefault()
     }
     return (
-        <main className="flex flex-col  gap-7 pt-8 pb-7 lg:p-0 lg:flex-row-reverse">
+        <main className="flex flex-col  gap-7 h-screen justify-center pt-8 pb-7 lg:p-0 lg:flex-row-reverse">
             <section className="lg:w-[50vw] flex flex-col justify-center items-center gap-7">
                 <h1 className="hidden lg:block text-3xl max-w-[381px] font-light">Sua nova experiência em compras online</h1>
                 <img src={imgLogo} alt="" className="lg:h-[150px] lg:w-[383px] object-cover"
                 onClick={()=>navigate("/")}
                 />
             </section>
-            <section className="lg:w-[50vw] lg:bg-slate-100 h-screen flex flex-col lg:justify-center items-center">
+            <section className="lg:w-[50vw] lg:bg-slate-100 lg:h-screen flex flex-col lg:justify-center items-center">
             <form className="flex flex-col justify-center items-center bg-white px-5 py-[14px] max-w-[450px] w-full" onSubmit={(e)=>handleSubmit(e)}>
                 <h1 className="text-black text-2xl font-semibold pb-6">Fazer Login</h1>
                 <div className="flex flex-col gap-5 w-full items-center justify-center">
