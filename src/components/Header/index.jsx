@@ -3,25 +3,26 @@ import { IoMdSearch } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 import logoERede from "../../assets/logo-e-rede.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useContext, useState, useEffect} from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { CartContext } from "../../context/cartContext";
 
 function Botoes() {
 
-    const {user}= useContext(UserContext)?useContext(UserContext):{user:false}
-    const{cart}=useContext(CartContext)?useContext(UserContext):{cart:false}
+    const { user } = useContext(UserContext) ? useContext(UserContext) : { user: false }
+    const { cart } = useContext(CartContext)
     const [totalItemsCart, setTotalItemsCart] = useState(0)
-    useEffect(()=>{
+    useEffect(() => {
         let total = 0
-        cart?.products.forEach((product)=>{
-            total+= product.qtt 
+        cart?.products.forEach((product) => {
+            total += product.qtt
         })
         setTotalItemsCart(total)
-    })
+    }, [cart])
+
     return (
         <div className="flex justify-center items-center md:w-full max-w-[289px] gap-5">
-            {user?
+            {user ?
                 <div className="flex items-center justify-center gap-5">
                     <img src={user.avatar} alt={user} className="h-10 w-10 rounded-full hidden lg:block" />
                     <h1 className="hidden lg:block">Olá , {user.name}</h1>
@@ -34,12 +35,14 @@ function Botoes() {
                 </>
 
             }
-            <div>
-            <MdOutlineShoppingCart className="text-white text-2xl" />
-            <div className="h-2 w-2 flex justify-center items-center rounded-full relative bg-red-500 p-3 ">{totalItemsCart} </div>
+            <div className="flex items-center justify-center">
+                <MdOutlineShoppingCart className="text-white text-2xl absolute" />
+                {totalItemsCart > 0 &&
+                    <div className="h-2 w-2 flex justify-center items-center rounded-full relative -top-4 -right-2 bg-red-500 p-3 ">{totalItemsCart} </div>
+                }
             </div>
-            
-            
+
+
         </div>
     )
 }
