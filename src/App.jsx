@@ -11,31 +11,34 @@ import SignUp from "./pages/SignUp"
 import { UserContext, UserProvider } from "./context/userContext"
 import { useContext, useState } from "react"
 import { CartProvider } from "./context/cartContext"
+import { ProductProvider } from "./context/productContext"
 
 function App() {
   const [isAuth, setIsAuth] = useState(!!useContext(UserContext))
 
-  
+
   return (
     <div className=" flex flex-col items-center bg-blue-900 text-zinc-50 min-h-screen overflow-hidden">
       <UserProvider>
         <CartProvider>
-          <Header />
-          <NavBar />
-          <div className=" flex justify-center items-center">
+          <ProductProvider>
+            <Header />
+            <NavBar />
+            <div className=" flex justify-center items-center">
 
-            <Routes>
-              <Route path="" element={<Home />} />
-              <Route path="/produtos" element={<Products />} />
-              <Route path="/categorias" element={<Categories />} />
-              <Route path="/meus-pedidos" element={isAuth ? <MyOrders /> : <Navigate to="/sign-in" />} />
-              <Route path="/sign-in" element={isAuth ? <Navigate to="/" /> : <SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
+              <Routes>
+                <Route path="" element={<Home />} />
+                <Route path="/produtos" element={<Products />} />
+                <Route path="/categorias" element={<Categories />} />
+                <Route path="/meus-pedidos" element={isAuth ? <MyOrders /> : <Navigate to="/sign-in" />} />
+                <Route path="/sign-in" element={isAuth ? <Navigate to="/" /> : <SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
 
-            </Routes>
+              </Routes>
 
-          </div>
-          <Footer />
+            </div>
+            <Footer />
+          </ProductProvider>
         </CartProvider>
       </UserProvider>
     </div>

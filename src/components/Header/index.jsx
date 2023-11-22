@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { CartContext } from "../../context/cartContext";
+import ModalCarrinho from "../ModalCarrinho";
 
 function Botoes() {
 
@@ -36,10 +37,17 @@ function Botoes() {
 
             }
             <div className="flex items-center justify-center">
-                <MdOutlineShoppingCart className="text-white text-2xl absolute" />
+                <button className="peer absolute">
+                    <MdOutlineShoppingCart className="text-white text-2xl " />
+                </button>
+
                 {totalItemsCart > 0 &&
                     <div className="h-2 w-2 flex justify-center items-center rounded-full relative -top-4 -right-2 bg-red-500 p-3 ">{totalItemsCart} </div>
                 }
+                <div className="peer-focus:block hidden">
+                    <ModalCarrinho />
+                </div>
+
             </div>
 
 

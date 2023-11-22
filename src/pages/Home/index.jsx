@@ -5,6 +5,7 @@ import imgMob from "../../assets/promo-banner-mobile.png"
 import { useContext } from "react"
 import { CartContext } from "../../context/cartContext"
 import { UserContext } from "../../context/userContext"
+import { ProductContext } from "../../context/productContext"
 function Card({ highlighted }) {
     const { cart, setCart } = useContext(CartContext)
     const { user } = useContext(UserContext)
@@ -71,9 +72,7 @@ function Promo() {
     )
 }
 function Destaques() {
-    const highlighted = {
-
-    }
+    const {products} = useContext(ProductContext)
     const highlighteds = [
         { id: 1, tittle: "Nique Air Surf", img: tenis, category: "Tênis", price: "R$ 220,00" },
         { id: 2, tittle: "Nique Air Surf", img: tenis, category: "Tênis", price: "R$ 220,00" },
@@ -89,7 +88,7 @@ function Destaques() {
 
             <h1 className="text-blue-900 font-semibold text-xl py-6 pl-7  w-full">Destaques</h1>
             <div className="grid xl:grid-cols-6 xl:gap-10 lg:grid-cols-5 lg:gap-8 md:grid-cols-4 md:gap-6 grid-cols-2 gap-2 place-items-center lg:w-full">
-                {highlighteds.map((highlighted, index) => (
+                {products?.map((highlighted, index) => (
 
                     <Card key={index} highlighted={highlighted} />
 
