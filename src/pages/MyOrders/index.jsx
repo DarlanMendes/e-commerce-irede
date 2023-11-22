@@ -1,6 +1,6 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import imgTenis from "../../assets/tenis.webp"
-import { UserContext } from "../../assets/contexts/userContext"
+import { UserContext } from "../../context/userContext"
 
 
 function HeaderCardOrders() {
@@ -92,8 +92,20 @@ function CardOrders({ sale }) {
     )
 }
 export default function MyOrders() {
+    const {user} = useContext(UserContext)
 
+    const handleOrdersFetch=({id})=>{
+        if(id===1233){
+            return sales
+        }else{
+            return []
+        }
+        
+    }
+    useEffect(()=>{
+            handleOrdersFetch(user.id)
 
+    })
 
     const sales = [
         {

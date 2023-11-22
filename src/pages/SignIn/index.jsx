@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo-e-rede.png";
 import {  useContext, useState } from "react";
-import { UserContext } from "../../assets/contexts/userContext";
+import { UserContext } from "../../context/userContext";
 
 export default function SignIn() {
     const navigate= useNavigate()

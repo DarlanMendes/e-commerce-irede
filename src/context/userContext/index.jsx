@@ -8,7 +8,7 @@ export const UserProvider=({children})=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     useEffect(()=>{
 
-        localStorage.setItem("user", JSON.stringify(user))
+     localStorage.setItem("user", JSON.stringify(user))
     },[user])
    
        

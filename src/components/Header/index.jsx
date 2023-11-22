@@ -4,12 +4,21 @@ import { Link, useLocation } from "react-router-dom";
 import logoERede from "../../assets/logo-e-rede.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useContext, useState, useEffect} from "react";
-import { UserContext } from "../../assets/contexts/userContext";
+import { UserContext } from "../../context/userContext";
+import { CartContext } from "../../context/cartContext";
 
 function Botoes() {
 
     const {user}= useContext(UserContext)?useContext(UserContext):{user:false}
-    
+    const{cart}=useContext(CartContext)?useContext(UserContext):{cart:false}
+    const [totalItemsCart, setTotalItemsCart] = useState(0)
+    useEffect(()=>{
+        let total = 0
+        cart?.products.forEach((product)=>{
+            total+= product.qtt 
+        })
+        setTotalItemsCart(total)
+    })
     return (
         <div className="flex justify-center items-center md:w-full max-w-[289px] gap-5">
             {user?
@@ -25,8 +34,12 @@ function Botoes() {
                 </>
 
             }
-
+            <div>
             <MdOutlineShoppingCart className="text-white text-2xl" />
+            <div className="h-2 w-2 flex justify-center items-center rounded-full relative bg-red-500 p-3 ">{totalItemsCart} </div>
+            </div>
+            
+            
         </div>
     )
 }
