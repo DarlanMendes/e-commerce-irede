@@ -5,19 +5,16 @@ import { UserContext } from "../../assets/contexts/userContext";
 
 export default function SignIn() {
     const navigate= useNavigate()
-    const {setId, setEmail, setAvatar, setName} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
 
-    const[user, setUser]=useState({email:"", password:""})
+    const[userInput, setUserInput]=useState({email:"", password:""})
     const userTeste = {email:"darlan.mendes@irede.org.br", password:"123456"}
 
     function testeLogin(){
-        if(user.email === userTeste.email && user.password === userTeste.password){
-           
-            setEmail(user.email)
-            setName("Darlan Mendes")
-            setId(121133)
-            setAvatar("https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png")
-            navigate("/")
+        if(userInput.email === userTeste.email && userInput.password === userTeste.password){
+           setUser({email:userInput.email, name:"Darlan Mendes", id:1233, avatar:"https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"})
+           window.location.href="/"
+          
         }else{
             alert("Erro ao tentar se logar")
         }
@@ -27,7 +24,7 @@ export default function SignIn() {
         testeLogin()
     }
     const handleLoginInfo=(e)=>{
-            setUser(previous=>({...previous,[e.target.name]:e.target.value}))
+            setUserInput(previous=>({...previous,[e.target.name]:e.target.value}))
     }
 
     return (
@@ -47,7 +44,7 @@ export default function SignIn() {
                         <input placeholder="Digite seu e-mail" required type="email" onChange={(e)=>handleLoginInfo(e)}
                         className=" bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" 
                         name="email"
-                        value={user.email}
+                        value={userInput.email}
                         />
                     </label>
                     <label className="text-black flex flex-col w-full justify-center items-center">
@@ -55,7 +52,7 @@ export default function SignIn() {
                         <input placeholder="Digite sua senha" required type="password" onChange={(e)=>handleLoginInfo(e)}
                         className="bg-slate-100 p-3 rounded-md min-w-[260px] outline-none lg:w-[300px]" 
                         name="password"
-                        value={user.password}
+                        value={userInput.password}
                         />
                     </label>
 

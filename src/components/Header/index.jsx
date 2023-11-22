@@ -8,13 +8,13 @@ import { UserContext } from "../../assets/contexts/userContext";
 
 function Botoes() {
 
-    const user = useContext(UserContext)
+    const {user}= useContext(UserContext)?useContext(UserContext):{user:false}
     
     return (
         <div className="flex justify-center items-center md:w-full max-w-[289px] gap-5">
             {user?
                 <div className="flex items-center justify-center gap-5">
-                    <img src={user.avatar} alt="" className="h-10 w-10 rounded-full hidden lg:block" />
+                    <img src={user.avatar} alt={user} className="h-10 w-10 rounded-full hidden lg:block" />
                     <h1 className="hidden lg:block">Olá , {user.name}</h1>
                 </div>
 
