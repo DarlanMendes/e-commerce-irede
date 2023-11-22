@@ -1,18 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo-e-rede.png";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
+import { UserContext } from "../../assets/contexts/userContext";
 
 export default function SignIn() {
     const navigate= useNavigate()
-    
+    const {setId, setEmail, setAvatar, setName} = useContext(UserContext)
 
     const[user, setUser]=useState({email:"", password:""})
     const userTeste = {email:"darlan.mendes@irede.org.br", password:"123456"}
 
     function testeLogin(){
         if(user.email === userTeste.email && user.password === userTeste.password){
+           
+            setEmail(user.email)
+            setName("Darlan Mendes")
+            setId(121133)
+            setAvatar("https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png")
             navigate("/")
-            localStorage.setItem("user", JSON.stringify({email:user.email,name:"Darlan Mendes", id:121133}))
         }else{
             alert("Erro ao tentar se logar")
         }

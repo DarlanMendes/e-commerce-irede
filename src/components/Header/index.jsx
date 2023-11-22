@@ -3,13 +3,29 @@ import { IoMdSearch } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 import logoERede from "../../assets/logo-e-rede.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect} from "react";
+import { UserContext } from "../../assets/contexts/userContext";
 
 function Botoes() {
+
+    const user = useContext(UserContext)
+    
     return (
         <div className="flex justify-center items-center md:w-full max-w-[289px] gap-5">
-            <Link to="sign-up" className="hidden md:flex">Cadastre-se</Link>
-            <Link to="sign-in" className="bg-orange-500 h-10 w-32 rounded-lg items-center justify-center  hidden md:flex">Entrar</Link>
+            {user?
+                <div className="flex items-center justify-center gap-5">
+                    <img src={user.avatar} alt="" className="h-10 w-10 rounded-full hidden lg:block" />
+                    <h1 className="hidden lg:block">Olá , {user.name}</h1>
+                </div>
+
+                :
+                <>
+                    <Link to="sign-up" className="hidden md:flex">Cadastre-se</Link>
+                    <Link to="sign-in" className="bg-orange-500 h-10 w-32 rounded-lg items-center justify-center  hidden md:flex">Entrar</Link>
+                </>
+
+            }
+
             <MdOutlineShoppingCart className="text-white text-2xl" />
         </div>
     )
@@ -51,7 +67,7 @@ function MenuHamburguer() {
 export default function Header() {
     const location = useLocation()
     const pathMatches = location.pathname === "/sign-up" || location.pathname === "/sign-in"
-    
+
     return (
         <>
             {!pathMatches ?

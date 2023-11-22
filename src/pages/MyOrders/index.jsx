@@ -58,8 +58,8 @@ function MenuOrders() {
 }
 function CardOrders({ sale }) {
 
-    const {user} = useContext(UserContext)
-    console.log(user)
+    const user = useContext(UserContext)
+  
     return (
 
         <details>
@@ -68,7 +68,7 @@ function CardOrders({ sale }) {
             </summary>
            
             {sale.products.map((product) => (
-                <div className="flex flex-col md:flex-row justify-between md:items-center border-t border-stone-500">
+                <div className="flex flex-col md:flex-row justify-between md:items-center border-t border-stone-500" key={product.id}>
                     <div className="flex gap-4 py-5 ">
                         <img src={product.img} alt={product.name} className="h-20 w-18 rounded-md" />
                         <div className="flex flex-col justify-center">
