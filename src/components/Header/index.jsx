@@ -1,12 +1,13 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoERede from "../../assets/logo-e-rede.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { CartContext } from "../../context/cartContext";
 import ModalCarrinho from "../ModalCarrinho";
+import { ProductContext } from "../../context/productContext";
 
 function Botoes() {
 
@@ -57,6 +58,24 @@ function Botoes() {
 
 
 function InputHeader() {
+    const [searchKey, setSearchKey] = useState('')
+    const [filteredList, setFilteredList] = useState()
+    const {products}= useContext(ProductContext)
+    const navigate = useNavigate()
+    const listFoundItems = () => {
+        if(searchKey.length>=2){
+            setFilteredList(products.filter((item)=> item.tittle.toLowerCase().includes(searchKey.toLowerCase())
+            ||item.category.toLowerCase().includes(searchKey.toLowerCase())
+            ))
+        }else{
+            setFilteredList("")
+        }
+        
+    }
+    const handleSearchInput = (e) => {
+        setSearchKey(e.target.value)
+        listFoundItems()
+    }
     return (
         <div className="text-stone-500 text-base px-3 w-full md:max-w-[520px] h-11 relative">
             <input className="bg-zinc-50 flex gap-2 w-full left-0 rounded-md
@@ -64,8 +83,17 @@ function InputHeader() {
                  outline-none
                   placeholder:text-stone-500 pl-11"
                 placeholder="Buscar"
+                onChange={(e) => handleSearchInput(e)}
+                value={searchKey}
             />
             <IoMdSearch className="text-2xl absolute h-11 ml-3 left-0" />
+            {filteredList&&filteredList.map((itemList)=>(
+                <div key={itemList.id} className="flex justify-between w-full bg-zinc-50 text-blue-900 px-4 py-2 shadow-sm z-20 relative top-10"
+                onClick={()=>{navigate(`/produtos/${itemList.id}`)}}
+                >
+                   <h1>{itemList.tittle}</h1> <span className="text-stone-500 text-xs">Categoria:{itemList.category}</span>
+                </div>
+            ))}
 
         </div>
     )
