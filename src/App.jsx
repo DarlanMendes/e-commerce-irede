@@ -12,6 +12,7 @@ import { UserContext, UserProvider } from "./context/userContext"
 import { useContext, useState } from "react"
 import { CartProvider } from "./context/cartContext"
 import { ProductProvider } from "./context/productContext"
+import ProductDetailed from "./pages/ProductDetailed"
 
 function App() {
   const [isAuth, setIsAuth] = useState(!!useContext(UserContext))
@@ -27,9 +28,13 @@ function App() {
             <div className=" flex justify-center items-center">
 
               <Routes>
-                <Route path="" element={<Home />} />
-                <Route path="/produtos" element={<Products />} />
+                <Route path="/">
+                  <Route path="" element={<Home/>}/>
+                  <Route path="/produtos" element={<Products />} />
+                  <Route path="/produtos/:id" element={<ProductDetailed />} />
+                </Route>
                 <Route path="/categorias" element={<Categories />} />
+
                 <Route path="/meus-pedidos" element={isAuth ? <MyOrders /> : <Navigate to="/sign-in" />} />
                 <Route path="/sign-in" element={isAuth ? <Navigate to="/" /> : <SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
