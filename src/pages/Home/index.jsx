@@ -12,8 +12,6 @@ function Card({ highlighted }) {
     const navigate = useNavigate()
 
     const handleCart = (product) => {
-
-
         if (user) {
             if (cart) {
                 let cartLocal = cart
@@ -45,6 +43,7 @@ function Card({ highlighted }) {
             navigate("/sign-in")
         }
     }
+    
     return (
         <div className=" shadow-sm w-36 h-52 md:w-44 md:h-64 rounded-md bg-white">
             <img src={highlighted.img} alt="card produto " className="h-24 md:h-32 w-44 object-cover" />
